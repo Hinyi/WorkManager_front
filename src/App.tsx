@@ -5,14 +5,17 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
-import MainLayout from './layout/MainLayout';
+import MainLayout from "./layout/MainLayout";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const App = () => {
-  const router = createBrowserRouter(createRoutesFromElements(
-    <Route path="/" element={<MainLayout />}>
+  const router = createBrowserRouter(
+    createRoutesFromElements(
 
-    </Route>
-  ));
+        <Route path="/" element={<MainLayout />}>
+        </Route>
+    )
+  );
   return <RouterProvider router={router} />;
 };
 
