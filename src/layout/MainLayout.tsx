@@ -6,10 +6,10 @@ import { ThemeProvider } from "@/components/theme-provider";
 const MainLayout = () => {
   return (
     <>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      {/* <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme"> */}
         <Navbar />
         <Outlet />
-      </ThemeProvider>
+      {/* </ThemeProvider> */}
     </>
   );
 };
