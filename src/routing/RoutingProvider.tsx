@@ -1,8 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "@/layout/MainLayout";
-import HomePage from "@/scenes/HomePage/HomePage";
-import Contact from "@/scenes/contact/Contact";
-import LoginPage from "@/scenes/loginPage/loginPage";
+import HomePage from "@/Pages/HomePage/HomePage";
+import Contact from "@/components/contact/Contact";
+import LoginPage from "@/Pages/LoginPage/LoginPage";
+import { About } from "@/components/about/About";
 
 const router = createBrowserRouter([
   {
@@ -13,10 +14,10 @@ const router = createBrowserRouter([
         element: <div>Home</div>,
         path: "/",
       },
-      {
-        path: "/login",
-        element: <LoginPage />,
-      },
+      // {
+      //   path: "/login",
+      //   element: <LoginPage />,
+      // },
       {
         path: "/home",
         element: <HomePage />,
@@ -25,7 +26,15 @@ const router = createBrowserRouter([
         element: <Contact />,
         path: "/contact",
       },
+      {
+        element: <About />,
+        path: "/about",
+      },
     ],
+  },
+  { 
+    path: "/login", 
+    element: <LoginPage /> 
   },
 ]);
 
