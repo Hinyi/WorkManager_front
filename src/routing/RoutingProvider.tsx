@@ -4,6 +4,7 @@ import HomePage from "@/Pages/HomePage/HomePage";
 import Contact from "@/components/contact/Contact";
 import LoginPage from "@/Pages/LoginPage/LoginPage";
 import { About } from "@/components/about/About";
+import { UserList } from "@/components/user/UserList";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         element: <About />,
         path: "/about",
+      },
+      {
+        element: <UserList />,
+        path: "/users",
       },
     ],
   },
