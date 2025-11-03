@@ -28,7 +28,7 @@ export function LoginForm({
             Enter your email below to login to your account
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="">
           <form>
             <FieldGroup>
               <Field>

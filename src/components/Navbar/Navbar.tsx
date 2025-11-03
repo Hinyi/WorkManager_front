@@ -9,7 +9,7 @@ const Navbar = () => {
           <div className="flex h-20 items-center justify-between">
             <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
               {/* <ModeToggle /> */}
-              <NavLink to="/" className="flex flex-shrink-0 items-center mr-4">
+              <NavLink to="/" className="flex shrink-0 items-center mr-4">
                 <img className="h-8 w-auto" src={logo} alt="Workflow" />
               </NavLink>
               <div className="md:ml-auto">
