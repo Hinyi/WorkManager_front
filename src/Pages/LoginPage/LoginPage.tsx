@@ -8,9 +8,9 @@ interface LoginPageProps {
 
 const LoginPage = ({variant = "dark"}: LoginPageProps) => {
   return (
-    <div className="flex justify-center items-center min-h-svh w-full">
-      <div>
-        <div>
+    <div className="justify-center items-center w-full min-h-screen flex">
+      <div className=""> 
+        <div className="">
           <LoginForm />
         </div>
       </div>
