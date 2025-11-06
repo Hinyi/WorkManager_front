@@ -1,15 +1,20 @@
 import { LoginForm } from "@/components/loginPage/login-form";
 import React from "react";
-import { loginCard, loginContainer, loginWrapper, styles } from "./login-page.styles";
+import {
+  loginCard,
+  loginContainer,
+  loginWrapper,
+  styles,
+} from "./login-page.styles";
 
 interface LoginPageProps {
   variant?: "dark" | "light";
 }
 
-const LoginPage = ({variant = "dark"}: LoginPageProps) => {
+const LoginPage = ({ variant = "dark" }: LoginPageProps) => {
   return (
     <div className="justify-center items-center w-full min-h-screen flex">
-      <div className=""> 
+      <div className="">
         <div className="">
           <LoginForm />
         </div>
@@ -47,4 +52,3 @@ export default LoginPage;
 // };
 
 // export default LoginPage;
-

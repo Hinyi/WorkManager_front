@@ -54,18 +54,12 @@ const MainLayout = () => {
   return (
     <>
       <div className="w-full px-4 py-2 flex items-center justify-between border-b">
-        <NavLink to={"/"} className="mr-4">
-          <img
-            className="h-15 w-auto"
-            src="/src/assets/logo.svg"
-            alt="Workflow"
-          />
-        </NavLink>
+        <div>Logo</div>
         <NavigationMenu viewport={false}>
           <NavigationMenuList className="flex-wrap">
             <NavigationMenuItem>
               <NavigationMenuTrigger>Home</NavigationMenuTrigger>
-              <NavigationMenuContent className="absolute min-w-[400px]">
+              <NavigationMenuContent>
                 <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
@@ -83,7 +77,7 @@ const MainLayout = () => {
                       </a>
                     </NavigationMenuLink>
                   </li>
-                  <ListItem href="/about" title="Introduction">
+                  <ListItem href="/docs" title="Introduction">
                     Re-usable components built using Radix UI and Tailwind CSS.
                   </ListItem>
                   <ListItem href="/docs/installation" title="Installation">
@@ -119,7 +113,7 @@ const MainLayout = () => {
                 asChild
                 // className={navigationMenuTriggerStyle()}
               >
-                <NavLink to="/docs">Docs</NavLink>
+                <Link href="/docs">Docs</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem className="hidden md:block">
@@ -202,8 +196,7 @@ const MainLayout = () => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        {/* <div>toggle</div> */}
-        <ModeToggle />
+        <div>toggle</div>
       </div>
       {/* </ThemeProvider> */}
       <Outlet />
@@ -221,7 +214,7 @@ function ListItem({
     <li {...props}>
       <NavigationMenuLink asChild>
         <div>
-          <NavLink to={href}>
+          <NavLink to={"/"}>
             <div className="text-sm leading-none font-medium">{title}</div>
             <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
               {children}

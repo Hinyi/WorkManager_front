@@ -5,6 +5,7 @@ import Contact from "@/components/contact/Contact";
 import LoginPage from "@/Pages/LoginPage/LoginPage";
 import { About } from "@/components/about/About";
 import { UserList } from "@/components/user/UserList";
+import { Docs } from "@/components/docs/Docs";
 
 const router = createBrowserRouter([
   {
@@ -37,9 +38,13 @@ const router = createBrowserRouter([
       },
     ],
   },
-  { 
-    path: "/login", 
-    element: <LoginPage /> 
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/docs",
+    element: <Docs />,
   },
 ]);
 
