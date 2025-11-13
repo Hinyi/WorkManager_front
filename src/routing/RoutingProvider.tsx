@@ -6,6 +6,7 @@ import LoginPage from "@/Pages/LoginPage/LoginPage";
 import { About } from "@/components/about/About";
 import { UserList } from "@/components/user/UserList";
 import { Docs } from "@/components/docs/Docs";
+import NotFoundPage from "@/Pages/NotFoundPage/NotFoundPage";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/docs",
     element: <Docs />,
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ]);
 

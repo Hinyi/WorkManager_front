@@ -1,5 +1,4 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { ThemeProvider } from "@/components/theme-provider/theme-provider";
 import {
   NavigationMenu,
   NavigationMenuContent,
