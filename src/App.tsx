@@ -1,5 +1,5 @@
+import { ThemeProvider } from "./components/theme-provider/theme-provider";
 import { RoutingProvider } from "./routing/RoutingProvider";
-
 
 const App = () => {
   // const router = createBrowserRouter(
@@ -13,7 +13,11 @@ const App = () => {
   //   )
   // );
   // return <RouterProvider router={router} />;
-  return <RoutingProvider />;
+  return (
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <RoutingProvider />
+    </ThemeProvider>
+  );
 };
 
 export default App;

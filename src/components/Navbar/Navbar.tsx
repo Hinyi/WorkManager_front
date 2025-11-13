@@ -1,5 +1,5 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/theme-provider/theme-provider";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -8,7 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { ModeToggle } from "@/components/mode-toggle";
+import { ModeToggle } from "@/components/theme-provider/mode-toggle";
 import { useIsMobile } from "@/hooks/use-is-mobile";
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react";
 
@@ -25,33 +25,11 @@ const components: { title: string; href: string; description: string }[] = [
     description:
       "For sighted users to preview content available behind a link.",
   },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
 ];
 
-export const Navbar = () => {
+const Navbar = () => {
   const isMobile = useIsMobile();
+  console.log("isMobile:", isMobile);
 
   return (
     <>
@@ -63,11 +41,11 @@ export const Navbar = () => {
             alt="Workflow"
           />
         </NavLink>
-        <NavigationMenu viewport={isMobile}>
+        <NavigationMenu viewport={Boolean(isMobile)}>
           <NavigationMenuList className="flex-wrap">
             <NavigationMenuItem>
               <NavigationMenuTrigger>Home</NavigationMenuTrigger>
-              <NavigationMenuContent className="">
+              <NavigationMenuContent>
                 <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
@@ -116,21 +94,13 @@ export const Navbar = () => {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                asChild
-                // className={navigationMenuTriggerStyle()}
-              >
-                <NavLink to="/docs">Docs</NavLink>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem className="hidden md:block">
+            <NavigationMenuItem className="md:block">
               <NavigationMenuTrigger>List</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[300px] gap-4">
                   <li>
                     <NavigationMenuLink asChild>
-                      <Link href="#">
+                      <Link to="#">
                         <div className="font-medium">Components</div>
                         <div className="text-muted-foreground">
                           Browse all components in the library.
@@ -138,7 +108,7 @@ export const Navbar = () => {
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link href="#">
+                      <Link to="#">
                         <div className="font-medium">Documentation</div>
                         <div className="text-muted-foreground">
                           Learn how to use the library.
@@ -146,7 +116,7 @@ export const Navbar = () => {
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link href="#">
+                      <Link to="#">
                         <div className="font-medium">Blog</div>
                         <div className="text-muted-foreground">
                           Read our latest blog posts.
@@ -163,13 +133,13 @@ export const Navbar = () => {
                 <ul className="grid w-[200px] gap-4">
                   <li>
                     <NavigationMenuLink asChild>
-                      <Link href="#">Components</Link>
+                      <Link to="#">Components</Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link href="#">Documentation</Link>
+                      <Link to="#">Documentation</Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link href="#">Blocks</Link>
+                      <Link to="#">Blocks</Link>
                     </NavigationMenuLink>
                   </li>
                 </ul>
@@ -181,19 +151,19 @@ export const Navbar = () => {
                 <ul className="grid w-[200px] gap-4">
                   <li>
                     <NavigationMenuLink asChild>
-                      <Link href="#" className="flex-row items-center gap-2">
+                      <Link to="#" className="flex-row items-center gap-2">
                         <CircleHelpIcon />
                         Backlog
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link href="#" className="flex-row items-center gap-2">
+                      <Link to="#" className="flex-row items-center gap-2">
                         <CircleIcon />
                         To Do
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link href="#" className="flex-row items-center gap-2">
+                      <Link to="#" className="flex-row items-center gap-2">
                         <CircleCheckIcon />
                         Done
                       </Link>
@@ -234,3 +204,5 @@ function ListItem({
     </li>
   );
 }
+
+export default Navbar;
