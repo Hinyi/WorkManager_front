@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar/Navbar";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import {
@@ -50,7 +51,7 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ];
 
-export const Navbar = () => {
+const MainLayout = () => {
   const isMobile = useIsMobile();
 
   return (
@@ -234,3 +235,5 @@ function ListItem({
     </li>
   );
 }
+
+export default MainLayout;
