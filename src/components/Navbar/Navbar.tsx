@@ -8,8 +8,8 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { ModeToggle } from "@/components/theme-provider/mode-toggle";
-import { useIsMobile } from "@/hooks/use-is-mobile";
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react";
+import { IsMobile } from "@/hooks/is_mobile_hook";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -27,7 +27,7 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 const Navbar = () => {
-  const isMobile = useIsMobile();
+  const isMobile = IsMobile();
   console.log("isMobile:", isMobile);
 
   return (
@@ -40,7 +40,7 @@ const Navbar = () => {
             alt="Workflow"
           />
         </NavLink>
-        <NavigationMenu viewport={Boolean(isMobile)}>
+        <NavigationMenu viewport={isMobile}>
           <NavigationMenuList className="flex-wrap">
             <NavigationMenuItem>
               <NavigationMenuTrigger>Home</NavigationMenuTrigger>
