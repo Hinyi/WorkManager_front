@@ -1,4 +1,4 @@
-import { LoginForm } from "@/components/loginPage/login-form";
+import { LoginForm } from "@/components/LoginPage/login-form";
 import React from "react";
 import {
   loginCard,

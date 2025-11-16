@@ -62,3 +62,22 @@ export const GET = (url: RequestInfo | URL, options?: RequestInit) =>
     headers: { ...options?.headers },
     method: "GET",
   });
+
+export const DELETE = (url: RequestInfo | URL, options?: RequestInit) =>
+  interceptedFetch(url, {
+    ...options,
+    headers: { ...options?.headers },
+    method: "DELETE",
+  });
+
+export const PATCH = (
+  url: RequestInfo | URL,
+  body: any,
+  options?: RequestInit
+) =>
+  interceptedFetch(url, {
+    ...options,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+    method: "PATCH",
+  });
