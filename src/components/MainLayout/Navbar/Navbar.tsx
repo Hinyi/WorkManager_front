@@ -7,7 +7,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { ModeToggle } from "@/components/MainLayout/theme-provider/mode-toggle";
+import { ModeToggle } from "@/components/theme-provider/mode-toggle";
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react";
 import { IsMobile } from "@/hooks/is_mobile_hook";
 

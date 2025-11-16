@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar/Navbar";
+import Navbar from "@/components/MainLayout/Navbar/Navbar";
 import { CardFooter, CardHeader } from "@/components/ui/card";
 
 const MainLayout = () => {

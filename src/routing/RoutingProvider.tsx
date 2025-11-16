@@ -1,12 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "@/layout/MainLayout";
 import HomePage from "@/Pages/HomePage/HomePage";
-import Contact from "@/components/contact/Contact";
+import Contact from "@/components/HomePage/contact/Contact";
 import LoginPage from "@/Pages/LoginPage/LoginPage";
-import { About } from "@/components/about/About";
+import { About } from "@/components/HomePage/about/About";
 import { UserList } from "@/components/user/UserList";
-import { Docs } from "@/components/docs/Docs";
+import { Docs } from "@/components/HomePage/docs/Docs";
 import NotFoundPage from "@/Pages/NotFoundPage/NotFoundPage";
+import FetchUsers from "@/Pages/FetchUsers/FetchUsers";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
   {
     path: "/docs",
     element: <Docs />,
+  },
+  {
+    path: "/fetch",
+    element: <FetchUsers />,
   },
   {
     path: "*",
