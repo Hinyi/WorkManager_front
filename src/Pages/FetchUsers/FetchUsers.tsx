@@ -22,6 +22,7 @@ const FetchUsers = () => {
     const result = await response({ email: "string@w" });
     setData(result.token);
   };
+
   return (
     <div>
       <button onClick={fetchData}>

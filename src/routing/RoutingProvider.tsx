@@ -8,6 +8,7 @@ import { UserList } from "@/components/user/UserList";
 import { Docs } from "@/components/HomePage/docs/Docs";
 import NotFoundPage from "@/Pages/NotFoundPage/NotFoundPage";
 import FetchUsers from "@/Pages/FetchUsers/FetchUsers";
+import GetUsers from "@/Pages/FetchUsers/GetUsers";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/fetch",
     element: <FetchUsers />,
+  },
+  {
+    path: "/getUsers",
+    element: <GetUsers />,
   },
   {
     path: "*",
