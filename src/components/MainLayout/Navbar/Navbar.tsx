@@ -177,7 +177,7 @@ const Navbar = () => {
         <ModeToggle />
       </div>
       {/* </ThemeProvider> */}
-      <Outlet />
+      {/* <Outlet /> */}
     </>
   );
 };
