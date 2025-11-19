@@ -1,1 +1,1 @@
-export const BASE_URL = "https://localhost:7096";
+export const BASE_URL = "http://localhost:5500/identity-api";

@@ -9,6 +9,7 @@ import { Docs } from "@/components/HomePage/docs/Docs";
 import NotFoundPage from "@/Pages/NotFoundPage/NotFoundPage";
 import FetchUsers from "@/Pages/FetchUsers/FetchUsers";
 import GetUsers from "@/Pages/FetchUsers/GetUsers";
+import CreateUser from "@/Pages/FetchUsers/CreateUser";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
   {
     path: "/getUsers",
     element: <GetUsers />,
+  },
+  {
+    path: "/CreateUser",
+    element: <CreateUser />,
   },
   {
     path: "*",
