@@ -1,3 +1,5 @@
+import { About } from "@/components/HomePage/about/About";
+import Contact from "@/components/HomePage/contact/Contact";
 import { Footer } from "@/components/MainLayout/footer/Footer";
 import Navbar from "@/components/MainLayout/Navbar/Navbar";
 import { CardFooter, CardHeader } from "@/components/ui/card";
