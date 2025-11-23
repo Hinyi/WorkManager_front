@@ -10,6 +10,7 @@ import NotFoundPage from "@/Pages/NotFoundPage/NotFoundPage";
 import FetchUsers from "@/Pages/FetchUsers/FetchUsers";
 import GetUsers from "@/Pages/FetchUsers/GetUsers";
 import CreateUser from "@/Pages/FetchUsers/CreateUser";
+import CreateUserQuery from "@/Pages/FetchUsers/CreateUserQuery";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
   {
     path: "/CreateUser",
     element: <CreateUser />,
+  },
+  {
+    path: "/CreateUser2",
+    element: <CreateUserQuery />,
   },
   {
     path: "*",
