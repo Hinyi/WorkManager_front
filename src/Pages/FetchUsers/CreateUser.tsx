@@ -10,7 +10,7 @@ const CreateUser = () => {
   const [confirmPassword, setconfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
