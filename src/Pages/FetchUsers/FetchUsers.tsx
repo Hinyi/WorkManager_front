@@ -8,9 +8,8 @@ interface FetchUsersProps {
 }
 
 const useService = () => {
-  const url = BASE_URL;
   const response: FetchUsersProps["userData"] = async (body) =>
-    POST(`${url}/auth/login`, body).then((res) => res.json());
+    POST(`${BASE_URL}/auth/login`, body).then((res) => res.json());
   return { response };
 };
 
