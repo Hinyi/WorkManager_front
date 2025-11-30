@@ -21,8 +21,8 @@ interface CreateUserQueryResponseDTO {
 
 const useCreateUser = () => {
   return useMutation<
-    //CreateUserQueryResponseDTO,
-    string,
+    CreateUserQueryResponseDTO,
+    // string,
     Error,
     CreateUserQueryRequestDTO
   >({
@@ -36,14 +36,14 @@ const useCreateUser = () => {
 
       const response = await fetch(`${BASE_URL}/api/users`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "*/*" },
         body: JSON.stringify(payload),
       });
 
       if (!response.ok) throw new Error("Network response was not ok");
 
-      //return response.json();
-      return response.text();
+      return response.json();
+      // return response.text();
     },
   });
 };

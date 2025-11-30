@@ -4,8 +4,7 @@ import { BASE_URL } from "@/xhr/urls";
 import React, { useState } from "react";
 
 async function loadUsers() {
-  const res = await GET(`${BASE_URL}/api/users/getUsers`);
-  return res.json();
+  return await GET(`${BASE_URL}/api/users/getUsers`).then((res) => res.json());
 }
 
 const GetUsers = () => {
