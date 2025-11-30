@@ -1,8 +1,8 @@
 export type CreateUserRequestDTO = {
   email: string;
-  password: string;
   firstName: string;
   lastName: string;
+  password: string;
   confirmPassword: string;
 };
 

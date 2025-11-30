@@ -8,10 +8,10 @@ const CreateUser = () => {
   const { register, handleSubmit, reset } = useForm<CreateUserRequestDTO>({
     defaultValues: {
       email: "",
-      password: "aaaaaaa",
+      password: "Aaaaaaa!23",
       firstName: "aaaa",
       lastName: "aaaa",
-      confirmPassword: "aaaaaaa",
+      confirmPassword: "Aaaaaaa!23",
     },
   });
   const [loading, setLoading] = useState(false);
@@ -21,8 +21,8 @@ const CreateUser = () => {
     console.log("form data:", data);
     const payload = { ...data, password: "a", confirmPassword: "a" };
     try {
-      console.log("form data:", data);
-      const response = await createUser(payload);
+      console.log("form data:", payload);
+      const response = await createUser(data);
       alert(`User created! ID: ${response.id}`);
     } catch (error) {
       alert("Failed to create user");
