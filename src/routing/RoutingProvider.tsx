@@ -11,6 +11,7 @@ import FetchUsers from "@/Pages/FetchUsers/FetchUsers";
 import GetUsers from "@/Pages/FetchUsers/GetUsers";
 import CreateUser from "@/Pages/FetchUsers/CreateUser";
 import CreateUserQuery from "@/Pages/FetchUsers/CreateUserQuery";
+import RegisterPage from "@/Pages/RegisterPage/RegisterPage";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/register",
+    element: <RegisterPage />,
   },
   {
     path: "/docs",
