@@ -1,5 +1,8 @@
 import { registerService } from "@/services/registerService/registerService";
-import { RegisterRequestDTO } from "@/services/registerService/registerServiceDTO";
+import {
+  RegisterRequestDTO,
+  RegisterResponseDTO,
+} from "@/services/registerService/registerServiceDTO";
 import { useMutation } from "@tanstack/react-query";
 import React, { use } from "react";
 import { useForm } from "react-hook-form";
@@ -20,16 +23,18 @@ const RegisterPage = () => {
     },
   });
 
-  const mutation = useMutation<unknown, unknown, RegisterRequestDTO>({
+  const mutation = useMutation<RegisterResponseDTO, Error, RegisterRequestDTO>({
     mutationFn: async (data: RegisterRequestDTO) => {
       const service = await registerService();
       return service.registerUser(data);
     },
     onSuccess: (data) => {
       alert("Registration successful!");
+      console.log("Registered user data:", data.id);
     },
     onError: (error) => {
       alert("Registration failed!");
+      console.error("Registration error:", error);
     },
   });
 
@@ -50,7 +55,7 @@ const RegisterPage = () => {
       {errors.firstName && <p>{errors.firstName.message}</p>}
 
       <input
-        type="email"
+        type="text"
         placeholder="Email"
         {...register("email", { required: "Email is required" })}
       />

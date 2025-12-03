@@ -7,10 +7,10 @@ import {
 import { AxiosError } from "axios";
 import { api } from "./api";
 import { useAuth } from "./AuthContext";
-import { AuthResponse, LoginCredentials } from "./types";
+import { AuthResponse, LoginCredentials, LoginResponse } from "./types";
 
 export const useLogin = (): UseMutationResult<
-  AuthResponse,
+  LoginResponse,
   AxiosError,
   LoginCredentials
 > => {
@@ -19,7 +19,11 @@ export const useLogin = (): UseMutationResult<
   return useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      console.log("Login successful", data.user);
+      console.log("Login successful", data.token);
+      // alert("Login successful!");
+      console.log("Redirecting to home page...");
+      window.location.href = "/";
+      console.log(data.token);
     },
     onError: (error: AxiosError<{ message: string }>) => {
       console.error("Login failed:", error.response?.data?.message);

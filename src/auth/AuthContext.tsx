@@ -5,7 +5,13 @@ import {
   useEffect,
   useState,
 } from "react";
-import { AuthContextType, AuthResponse, LoginCredentials, User } from "./types";
+import {
+  AuthContextType,
+  AuthResponse,
+  LoginCredentials,
+  LoginResponse,
+  User,
+} from "./types";
 import { api } from "./api";
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -28,6 +34,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const fetchUser = async (): Promise<void> => {
     try {
       const { data } = await api.get<{ user: User }>("/auth/me");
+      console.log("Fetched user data:", data);
       setUser(data.user);
     } catch (error) {
       localStorage.removeItem("accessToken");
@@ -38,10 +45,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const login = async (
     credentials: LoginCredentials
-  ): Promise<AuthResponse> => {
-    const { data } = await api.post<AuthResponse>("/auth/login", credentials);
-    localStorage.setItem("accessToken", data.accessToken);
-    setUser(data.user);
+  ): Promise<LoginResponse> => {
+    const { data } = await api.post<LoginResponse>("/auth/login", credentials);
+    console.log("AuthProvider login data:", data);
+    console.log("breakpoint");
+    localStorage.setItem("accessToken", data.token);
+    // setUser(data.user);
     return data;
   };
 

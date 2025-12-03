@@ -6,17 +6,25 @@ import {
   loginWrapper,
   styles,
 } from "./login-page.styles";
+import { LoginCredentials } from "@/auth/types";
+import { useLogin } from "@/auth/hooks";
 
 interface LoginPageProps {
   variant?: "dark" | "light";
 }
 
 const LoginPage = ({ variant = "dark" }: LoginPageProps) => {
+  const loginService = useLogin();
+
+  const onSubmit = (data: LoginCredentials) => {
+    loginService.mutate(data);
+  };
+
   return (
     <div className="justify-center items-center w-full min-h-screen flex">
       <div className="">
         <div className="">
-          <LoginForm />
+          <LoginForm onSubmit={onSubmit} />
         </div>
       </div>
     </div>

@@ -1,26 +1,37 @@
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { LoginCredentials } from "@/auth/types";
+import { useForm } from "react-hook-form";
 
-export function LoginForm({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+interface LoginFormProps extends Omit<React.ComponentProps<"div">, "onSubmit"> {
+  onSubmit: (data: LoginCredentials) => void;
+}
+
+export function LoginForm({ className, onSubmit, ...props }: LoginFormProps) {
+  const { register, handleSubmit } = useForm<LoginCredentials>();
+
   return (
-    <div className={cn("flex flex-col gap-6 w-full max-w-md sm:max-w-lg lg:max-w-xl mx-auto p-4", className)} {...props}>
+    <div
+      className={cn(
+        "flex flex-col gap-6 w-full max-w-md sm:max-w-lg lg:max-w-xl mx-auto p-4",
+        className
+      )}
+      {...props}
+    >
       <Card>
         <CardHeader>
           <CardTitle>Login to your account</CardTitle>
@@ -29,7 +40,7 @@ export function LoginForm({
           </CardDescription>
         </CardHeader>
         <CardContent className="">
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="email">Email</FieldLabel>
@@ -38,6 +49,7 @@ export function LoginForm({
                   type="email"
                   placeholder="m@example.com"
                   required
+                  {...register("email")}
                 />
               </Field>
               <Field>
@@ -50,7 +62,12 @@ export function LoginForm({
                     Forgot your password?
                   </a>
                 </div>
-                <Input id="password" type="password" required />
+                <Input
+                  id="password"
+                  type="password"
+                  required
+                  {...register("password")}
+                />
               </Field>
               <Field>
                 <Button type="submit">Login</Button>
@@ -66,5 +83,5 @@ export function LoginForm({
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

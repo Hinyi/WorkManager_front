@@ -1,6 +1,6 @@
 import { BASE_URL } from "@/xhr/urls";
 import axios from "axios";
-import { refreshToken } from "./refreshToken";
+import { authService } from "./authService";
 
 export const api = axios.create({
   baseURL: `${BASE_URL}`,
@@ -27,7 +27,7 @@ api.interceptors.response.use(
       original._retry = true;
 
       try {
-        const newToken = await refreshToken();
+        const newToken = await authService.refreshToken();
 
         localStorage.setItem("accessToken", newToken.accessToken);
         original.headers.Authorization = `Bearer ${newToken}`;
@@ -37,7 +37,7 @@ api.interceptors.response.use(
         console.error("Token refresh failed:", err);
 
         localStorage.removeItem("accessToken");
-        window.location.href = "/login";
+        // window.location.href = "/login";
 
         return Promise.reject(err);
       }

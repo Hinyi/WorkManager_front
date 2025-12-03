@@ -1,13 +1,18 @@
 export interface User {
-  id: string;
-  email: string;
-  name?: string;
-  role?: string;
+  Id: string;
+  Email: string;
+  UserName?: string;
+  // role?: string;
 }
 
 export interface LoginCredentials {
   email: string;
   password: string;
+}
+
+export interface LoginResponse {
+  token: string;
+  refreshToken: string;
 }
 
 export interface AuthResponse {
@@ -27,7 +32,7 @@ export interface ApiError {
 
 export interface AuthContextType {
   user: User | null;
-  login: (credentials: LoginCredentials) => Promise<AuthResponse>;
+  login: (credentials: LoginCredentials) => Promise<LoginResponse>;
   logout: () => Promise<void>;
   isLoading: boolean;
 }
