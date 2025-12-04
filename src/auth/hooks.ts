@@ -21,6 +21,7 @@ export const useLogin = (): UseMutationResult<
     onSuccess: (data) => {
       console.log("Login successful", data.token);
       // alert("Login successful!");
+      localStorage.setItem("accessToken", data.token);
       console.log("Redirecting to home page...");
       window.location.href = "/";
       console.log(data.token);

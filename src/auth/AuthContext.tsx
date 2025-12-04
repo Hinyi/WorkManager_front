@@ -33,10 +33,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchUser = async (): Promise<void> => {
     try {
-      const { data } = await api.get<{ user: User }>("/auth/me");
+      const { data } = await api.get<User>("/auth/me");
       console.log("Fetched user data:", data);
-      setUser(data.user);
+      setUser(data);
+      console.log("user data:", data);
     } catch (error) {
+      console.log("user data:", error);
       localStorage.removeItem("accessToken");
     } finally {
       setIsLoading(false);
@@ -50,7 +52,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     console.log("AuthProvider login data:", data);
     console.log("breakpoint");
     localStorage.setItem("accessToken", data.token);
-    // setUser(data.user);
+    // const userData = await api.get<{ user: User }>("/auth/me");
+    // setUser(userData.data.user);
+    // await fetchUser();
     return data;
   };
 

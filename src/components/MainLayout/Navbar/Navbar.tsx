@@ -10,6 +10,8 @@ import {
 import { ModeToggle } from "@/components/theme-provider/mode-toggle";
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react";
 import { IsMobile } from "@/hooks/is_mobile_hook";
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/auth/AuthContext";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -29,7 +31,10 @@ const components: { title: string; href: string; description: string }[] = [
 const Navbar = () => {
   const isMobile = IsMobile();
   console.log("isMobile:", isMobile);
+  const { user, isLoading } = useAuth();
+  // console.log("navar", user);
 
+  if (isLoading) return <Button />;
   return (
     <>
       <div className="w-full px-4 py-2 flex items-center justify-between border-b">
@@ -173,8 +178,14 @@ const Navbar = () => {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        {/* <div>toggle</div> */}
-        <ModeToggle />
+        <div>
+          {/* <div>toggle</div> */}
+
+          <Button variant="outline" type="button">
+            <Link to="/login">{user ? "log out" : "sign in"}</Link>
+          </Button>
+          <ModeToggle />
+        </div>
       </div>
       {/* </ThemeProvider> */}
       {/* <Outlet /> */}
