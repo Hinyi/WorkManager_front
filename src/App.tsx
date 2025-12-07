@@ -17,7 +17,7 @@ const App = () => {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <AuthProvider>
         <QueryClientProvider client={queryClient}>
-          <RoutingProvider />
+          <RoutingProvider></RoutingProvider>
         </QueryClientProvider>
       </AuthProvider>
     </ThemeProvider>

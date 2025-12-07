@@ -12,6 +12,7 @@ import GetUsers from "@/Pages/FetchUsers/GetUsers";
 import CreateUser from "@/Pages/FetchUsers/CreateUser";
 import CreateUserQuery from "@/Pages/FetchUsers/CreateUserQuery";
 import RegisterPage from "@/Pages/RegisterPage/RegisterPage";
+import LogoutPage from "@/Pages/LogoutPage/LogoutPage";
 
 const router = createBrowserRouter([
   {
@@ -42,11 +43,16 @@ const router = createBrowserRouter([
         element: <UserList />,
         path: "/users",
       },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
     ],
   },
+
   {
-    path: "/login",
-    element: <LoginPage />,
+    path: "/logout",
+    element: <LogoutPage />,
   },
   {
     path: "/register",
@@ -56,22 +62,22 @@ const router = createBrowserRouter([
     path: "/docs",
     element: <Docs />,
   },
-  {
-    path: "/fetch",
-    element: <FetchUsers />,
-  },
-  {
-    path: "/getUsers",
-    element: <GetUsers />,
-  },
-  {
-    path: "/CreateUser",
-    element: <CreateUser />,
-  },
-  {
-    path: "/CreateUser2",
-    element: <CreateUserQuery />,
-  },
+  // {
+  //   path: "/fetch",
+  //   element: <FetchUsers />,
+  // },
+  // {
+  //   path: "/getUsers",
+  //   element: <GetUsers />,
+  // },
+  // {
+  //   path: "/CreateUser",
+  //   element: <CreateUser />,
+  // },
+  // {
+  //   path: "/CreateUser2",
+  //   element: <CreateUserQuery />,
+  // },
   {
     path: "*",
     element: <NotFoundPage />,

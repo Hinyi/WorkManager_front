@@ -8,6 +8,7 @@ import { AxiosError } from "axios";
 import { api } from "./api";
 import { useAuth } from "./AuthContext";
 import { AuthResponse, LoginCredentials, LoginResponse } from "./types";
+import { useNavigate } from "react-router-dom";
 
 export const useLogin = (): UseMutationResult<
   LoginResponse,
@@ -15,6 +16,7 @@ export const useLogin = (): UseMutationResult<
   LoginCredentials
 > => {
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   return useMutation({
     mutationFn: login,
@@ -23,7 +25,8 @@ export const useLogin = (): UseMutationResult<
       // alert("Login successful!");
       localStorage.setItem("accessToken", data.token);
       console.log("Redirecting to home page...");
-      window.location.href = "/";
+      // window.location.href = "/";
+      navigate("/");
       console.log(data.token);
     },
     onError: (error: AxiosError<{ message: string }>) => {
@@ -32,14 +35,16 @@ export const useLogin = (): UseMutationResult<
   });
 };
 
-// src/hooks/useLogout.ts
 export const useLogout = (): UseMutationResult<void, AxiosError, void> => {
   const { logout } = useAuth();
+
+  const navigate = useNavigate();
 
   return useMutation({
     mutationFn: logout,
     onSuccess: () => {
       console.log("Logout successful");
+      navigate("/");
     },
   });
 };

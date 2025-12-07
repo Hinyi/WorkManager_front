@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const logout = async (): Promise<void> => {
     try {
-      await api.post("/auth/logout");
+      await api.post("/auth/revokeToken");
     } finally {
       localStorage.removeItem("accessToken");
       setUser(null);

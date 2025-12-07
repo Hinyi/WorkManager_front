@@ -182,7 +182,11 @@ const Navbar = () => {
           {/* <div>toggle</div> */}
 
           <Button variant="outline" type="button">
-            <Link to="/login">{user ? "log out" : "sign in"}</Link>
+            {user ? (
+              <Link to="/logout">Log out</Link>
+            ) : (
+              <Link to="/login">Log In</Link>
+            )}
           </Button>
           <ModeToggle />
         </div>
