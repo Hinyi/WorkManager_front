@@ -21,7 +21,8 @@ export interface AuthResponse {
 }
 
 export interface RefreshResponse {
-  accessToken: string;
+  token: string;
+  refreshToken: string;
 }
 
 export interface ApiError {

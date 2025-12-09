@@ -27,17 +27,26 @@ api.interceptors.response.use(
       original._retry = true;
 
       try {
+        console.log("REFRESHING TOKEN");
         const newToken = await authService.refreshToken();
-
-        localStorage.setItem("accessToken", newToken.accessToken);
-        original.headers.Authorization = `Bearer ${newToken}`;
+        console.log("REFRESH RETURNED", newToken);
+        localStorage.setItem("accessToken", newToken.token);
+        // set the refreshed token on the original request headers
+        if (original.headers) {
+          original.headers.Authorization = `Bearer ${newToken.token}`;
+        }
 
         return api(original);
       } catch (err) {
         console.error("Token refresh failed:", err);
 
         localStorage.removeItem("accessToken");
-        // window.location.href = "/login";
+        // Safe redirect outside React hooks
+        try {
+          window.location.href = "/login";
+        } catch {
+          // ignore
+        }
 
         return Promise.reject(err);
       }

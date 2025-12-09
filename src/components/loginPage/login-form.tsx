@@ -22,7 +22,12 @@ interface LoginFormProps extends Omit<React.ComponentProps<"div">, "onSubmit"> {
 }
 
 export function LoginForm({ className, onSubmit, ...props }: LoginFormProps) {
-  const { register, handleSubmit } = useForm<LoginCredentials>();
+  const { register, handleSubmit } = useForm<LoginCredentials>({
+    defaultValues: {
+      email: "string@w",
+      password: "string",
+    },
+  });
 
   return (
     <div

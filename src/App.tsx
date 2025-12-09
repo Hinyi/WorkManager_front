@@ -15,11 +15,11 @@ const queryClient = new QueryClient({
 const App = () => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <AuthProvider>
-        <QueryClientProvider client={queryClient}>
-          <RoutingProvider></RoutingProvider>
-        </QueryClientProvider>
-      </AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <RoutingProvider />
+        </AuthProvider>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 };

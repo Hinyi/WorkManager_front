@@ -1,0 +1,101 @@
+import { ReactNode, useEffect, useState, useRef } from "react";
+import { LoginCredentials, LoginResponse, User } from "./types";
+import { api } from "./api";
+
+import { AuthContext } from "./context";
+
+// Module-level flag to avoid re-running initial fetch if the provider remounts
+let authInitializedGlobally = false;
+
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [user, setUser] = useState<User | null>(null);
+  // Start with false if token exists (already logged in), true if not
+  const [isLoading, setIsLoading] = useState<boolean>(() => {
+    return !localStorage.getItem("accessToken");
+  });
+  const initializedRef = useRef(false);
+  const fetchingRef = useRef(false);
+
+  useEffect(() => {
+    // Prevent running twice in Strict Mode
+    if (initializedRef.current || authInitializedGlobally) return;
+    initializedRef.current = true;
+    authInitializedGlobally = true;
+
+    console.debug(
+      "AuthContext mounted (initializing=?, global=?):",
+      initializedRef.current,
+      authInitializedGlobally
+    );
+
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      fetchUser(true);
+    } else {
+      setIsLoading(false);
+    }
+  }, []);
+
+  const fetchUser = async (isInitialLoad = false): Promise<void> => {
+    if (fetchingRef.current) return; // Prevent concurrent calls
+    fetchingRef.current = true;
+    // Trace who invoked fetchUser
+    console.debug(
+      "AuthContext.fetchUser invoked (isInitialLoad=",
+      isInitialLoad,
+      ")"
+    );
+    console.trace();
+    try {
+      const { data } = await api.get<User>("/auth/me");
+      console.log("Fetched user data:", data);
+      setUser(data);
+    } catch (error) {
+      console.log("Fetch user error:", error);
+      localStorage.removeItem("accessToken");
+      setUser(null);
+    } finally {
+      // Only set isLoading false on initial load
+      if (isInitialLoad) {
+        setIsLoading(false);
+      }
+      fetchingRef.current = false;
+    }
+  };
+
+  const login = async (
+    credentials: LoginCredentials
+  ): Promise<LoginResponse> => {
+    const { data } = await api.post<LoginResponse>("/auth/login", credentials);
+    console.log("AuthProvider login data:", data);
+    localStorage.setItem("accessToken", data.token);
+    // Fetch user data after successful login (don't reset loading state)
+    await fetchUser(false);
+    return data;
+  };
+
+  const logout = async (): Promise<void> => {
+    try {
+      await api.post("/auth/revokeToken");
+    } catch (error) {
+      console.error("Logout error:", error);
+    } finally {
+      localStorage.removeItem("accessToken");
+      setUser(null);
+    }
+  };
+
+  // Debug: log important auth state changes for troubleshooting
+  useEffect(() => {
+    console.debug("AuthContext: isLoading ->", isLoading);
+  }, [isLoading]);
+
+  useEffect(() => {
+    console.debug("AuthContext: user ->", user);
+  }, [user]);
+  return (
+    <AuthContext.Provider value={{ user, login, logout, isLoading }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
