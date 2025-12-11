@@ -13,6 +13,7 @@ import CreateUser from "@/Pages/FetchUsers/CreateUser";
 import CreateUserQuery from "@/Pages/FetchUsers/CreateUserQuery";
 import RegisterPage from "@/Pages/RegisterPage/RegisterPage";
 import LogoutPage from "@/Pages/LogoutPage/LogoutPage";
+import { ProtectedRoute } from "@/Pages/ProtectedRoute/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        element: <div>Home</div>,
+        element: <HomePage />,
         path: "/",
       },
       // {
@@ -66,10 +67,14 @@ const router = createBrowserRouter([
   //   path: "/fetch",
   //   element: <FetchUsers />,
   // },
-  // {
-  //   path: "/getUsers",
-  //   element: <GetUsers />,
-  // },
+  {
+    path: "/getUsers",
+    element: (
+      <ProtectedRoute>
+        <GetUsers />
+      </ProtectedRoute>
+    ),
+  },
   // {
   //   path: "/CreateUser",
   //   element: <CreateUser />,

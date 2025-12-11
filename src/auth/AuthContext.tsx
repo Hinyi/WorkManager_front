@@ -27,7 +27,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setIsLoading(false);
       return;
     }
-
     if (token) {
       fetchUser(); // true = isInitialLoad
       console.log("Fetching user data on AuthProvider mount");
