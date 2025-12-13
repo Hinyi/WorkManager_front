@@ -181,7 +181,9 @@ const Navbar = () => {
         </NavigationMenu>
         <div>
           {/* <div>toggle</div> */}
-
+          <Link to="/user">
+            <Button>Hello</Button>
+          </Link>
           <Button variant="outline" type="button">
             {user ? (
               <Link to="/logout">Log out</Link>

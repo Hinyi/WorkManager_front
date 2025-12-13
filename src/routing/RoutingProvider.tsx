@@ -4,7 +4,6 @@ import HomePage from "@/Pages/HomePage/HomePage";
 import Contact from "@/components/HomePage/contact/Contact";
 import LoginPage from "@/Pages/LoginPage/LoginPage";
 import { About } from "@/components/HomePage/about/About";
-import { UserList } from "@/components/user/UserList";
 import { Docs } from "@/components/HomePage/docs/Docs";
 import NotFoundPage from "@/Pages/NotFoundPage/NotFoundPage";
 import FetchUsers from "@/Pages/FetchUsers/FetchUsers";
@@ -14,6 +13,7 @@ import CreateUserQuery from "@/Pages/FetchUsers/CreateUserQuery";
 import RegisterPage from "@/Pages/RegisterPage/RegisterPage";
 import LogoutPage from "@/Pages/LogoutPage/LogoutPage";
 import { ProtectedRoute } from "@/Pages/ProtectedRoute/ProtectedRoute";
+import UserProfile from "@/Pages/UserDashboard/UserDashboard";
 
 const router = createBrowserRouter([
   {
@@ -41,12 +41,16 @@ const router = createBrowserRouter([
         path: "/about",
       },
       {
-        element: <UserList />,
-        path: "/users",
-      },
-      {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/User",
+        element: (
+          <ProtectedRoute>
+            <UserProfile />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
