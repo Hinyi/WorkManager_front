@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 
 export function AccountTab() {
   return (
-    <Card className="h-full">
+    <Card className="">
       <CardHeader>
         <CardTitle>User Information</CardTitle>
       </CardHeader>
