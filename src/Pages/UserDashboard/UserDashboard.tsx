@@ -1,46 +1,55 @@
 import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs";
 import { AccountTab } from "@/components/UserDashboard/accountTab";
+import { AvatarSection } from "@/components/UserDashboard/avatarSection";
 import { EmptyState } from "@/components/UserDashboard/emptyState";
 import { Tab } from "@/components/UserDashboard/tab";
-import { UserContent } from "@/components/UserDashboard/userContent";
-import UserSidebar from "@/components/UserDashboard/userSidebar";
 
 import { User, Palette, Lock, Bell, Shield, Link2 } from "lucide-react";
 
 export default function UserDashboard() {
   return (
-    <Tabs
-      defaultValue="account"
-      className="flex flex-1 gap-6"
-      orientation="vertical"
-    >
-      {/* LEFT TABS */}
-      <TabsList className="flex h-full w-64 flex-col items-stretch justify-start rounded-xl border bg-background p-2">
-        {/* <AvatarSection /> */}
+    <div className="">
+      <div className="">
+        <Tabs
+          defaultValue="account"
+          className="flex gap-6 px-4"
+          orientation="vertical"
+        >
+          {/* LEFT TABS */}
+          <TabsList className="h-full min-w-64 flex flex-col items-stretch border-r-sidebar bg-background p-2">
+            <div className="mb-4">
+              <AvatarSection />
+            </div>
 
-        <Tab value="account" icon={User} label="Account" />
-        <Tab value="appearance" icon={Palette} label="Appearance" />
-        <Tab value="password" icon={Lock} label="Change Password" />
-        <Tab value="profile" icon={User} label="Profile" />
-        <Tab value="notifications" icon={Bell} label="Notification Settings" />
-        <Tab value="access" icon={Shield} label="Access Rights" />
-        <Tab value="linked" icon={Link2} label="Linked Services" />
-      </TabsList>
+            <Tab value="account" icon={User} label="Account" />
+            <Tab value="appearance" icon={Palette} label="Appearance" />
+            <Tab value="password" icon={Lock} label="Change Password" />
+            <Tab value="profile" icon={User} label="Profile" />
+            <Tab
+              value="notifications"
+              icon={Bell}
+              label="Notification Settings"
+            />
+            <Tab value="access" icon={Shield} label="Access Rights" />
+            <Tab value="linked" icon={Link2} label="Linked Services" />
+          </TabsList>
 
-      <div className="flex-1">
-        <TabsContent value="account" className="h-full">
-          <AccountTab />
-        </TabsContent>
+          <div className="flex flex-1 justify-center">
+            <TabsContent value="account" className="mt-0">
+              <AccountTab />
+            </TabsContent>
 
-        <TabsContent value="appearance">
-          <EmptyState title="Appearance" />
-        </TabsContent>
+            <TabsContent value="appearance">
+              <EmptyState title="Appearance" />
+            </TabsContent>
 
-        <TabsContent value="password">
-          <EmptyState title="Change Password" />
-        </TabsContent>
+            <TabsContent value="password">
+              <EmptyState title="Change Password" />
+            </TabsContent>
+          </div>
+        </Tabs>
       </div>
-    </Tabs>
+    </div>
   );
 }
 
