@@ -1,6 +1,7 @@
 import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs";
 import { AccountTab } from "@/components/UserDashboard/accountTab";
 import { AvatarSection } from "@/components/UserDashboard/avatarSection";
+import { ChangePassword } from "@/components/UserDashboard/changePassword";
 import { EmptyState } from "@/components/UserDashboard/emptyState";
 import { Tab } from "@/components/UserDashboard/tab";
 
@@ -44,7 +45,8 @@ export default function UserDashboard() {
             </TabsContent>
 
             <TabsContent value="password">
-              <EmptyState title="Change Password" />
+              <ChangePassword />
+              {/* <EmptyState title="Change Password" /> */}
             </TabsContent>
           </div>
         </Tabs>

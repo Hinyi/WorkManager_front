@@ -9,8 +9,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/auth/AuthContext";
 
 export function AccountTab() {
+  const user = useAuth().user;
+  console.log("AccountTab user:", user);
+
   return (
     <Card className="min-w-110">
       <CardHeader>
@@ -21,23 +25,23 @@ export function AccountTab() {
         <div className="space-y-6">
           <div className="space-y-2">
             <Label>Login (Email)</Label>
-            <Input disabled value="user@example.com" />
+            <Input value={user?.email} disabled />
           </div>
 
           <div className="grid grid-cols-3 gap-4">
             <div className="space-y-2">
               <Label>First Name</Label>
-              <Input value="David" />
+              <Input value={user?.UserName} disabled />
             </div>
 
             <div className="space-y-2">
               <Label>Second Name</Label>
-              <Input />
+              <Input placeholder="Second Name" />
             </div>
 
             <div className="space-y-2">
               <Label>Last Name</Label>
-              <Input value="Thompson" />
+              <Input placeholder="Last Name" />
             </div>
           </div>
 
@@ -61,7 +65,7 @@ export function AccountTab() {
           </div>
         </div>
 
-        <div className="pt-6">
+        <div className="pt-6 justify-end flex">
           <Button>Save</Button>
         </div>
       </CardContent>
