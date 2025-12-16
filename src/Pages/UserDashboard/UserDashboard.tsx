@@ -13,11 +13,11 @@ export default function UserDashboard() {
       <div className="">
         <Tabs
           defaultValue="account"
-          className="flex gap-6 px-4"
+          className="flex gap-6 px-4 items-center"
           orientation="vertical"
         >
           {/* LEFT TABS */}
-          <TabsList className="h-full min-w-64 flex flex-col items-stretch border-r-sidebar bg-background p-2">
+          <TabsList className=" min-w-64 flex-col items-stretch border-r-sidebar bg-background p-2">
             <div className="mb-4">
               <AvatarSection />
             </div>
@@ -35,7 +35,7 @@ export default function UserDashboard() {
             <Tab value="linked" icon={Link2} label="Linked Services" />
           </TabsList>
 
-          <div className="flex flex-1 justify-center">
+          <div className="justify-center w-full sm:w-80 md:w-96 lg:w-[500px]">
             <TabsContent value="account" className="mt-0">
               <AccountTab />
             </TabsContent>

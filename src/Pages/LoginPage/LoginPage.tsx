@@ -21,7 +21,7 @@ const LoginPage = ({ variant = "dark" }: LoginPageProps) => {
   };
 
   return (
-    <div className="justify-center items-center w-full min-h-screen flex">
+    <div className="justify-center items-center w-full h-full flex">
       <div className="">
         <div className="">
           <LoginForm onSubmit={onSubmit} />

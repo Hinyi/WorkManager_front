@@ -45,6 +45,10 @@ const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
+        path: "/register",
+        element: <RegisterPage />,
+      },
+      {
         path: "/User",
         element: (
           <ProtectedRoute>
@@ -59,10 +63,7 @@ const router = createBrowserRouter([
     path: "/logout",
     element: <LogoutPage />,
   },
-  {
-    path: "/register",
-    element: <RegisterPage />,
-  },
+
   {
     path: "/docs",
     element: <Docs />,

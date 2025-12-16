@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 export const Footer = () => {
   return (
     <>
-      <div className="border-b">
+      <div className="border-b py-4">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="font-semibold mb-2">O nas</h3>

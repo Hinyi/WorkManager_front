@@ -38,7 +38,7 @@ const Navbar = () => {
   // if (isLoading) return <Button />;
   return (
     <>
-      <div className="w-full px-4 py-2 flex items-center justify-between border-b">
+      <div className="w-full px-4 py-2 flex items-center justify-between">
         <NavLink to={"/"} className="mr-4">
           <img
             className="h-15 w-auto"
@@ -51,35 +51,30 @@ const Navbar = () => {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Home</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                  <li className="row-span-3">
+                <ul className="grid w-[300px] gap-4">
+                  <li>
                     <NavigationMenuLink asChild>
-                      <a
-                        className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md md:p-6"
-                        href="/"
-                      >
-                        <div className="mb-2 text-lg font-medium sm:mt-4">
-                          shadcn/ui
+                      <Link to="/">
+                        <div className="font-medium">Homepage</div>
+                      </Link>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <Link to="#">
+                        <div className="font-medium">Documentation</div>
+                        <div className="text-muted-foreground">
+                          Learn how to use the library.
                         </div>
-                        <p className="text-muted-foreground text-sm leading-tight">
-                          Beautifully designed components built with Tailwind
-                          CSS.
-                        </p>
-                      </a>
+                      </Link>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <Link to="#">
+                        <div className="font-medium">Blog</div>
+                        <div className="text-muted-foreground">
+                          Read our latest blog posts.
+                        </div>
+                      </Link>
                     </NavigationMenuLink>
                   </li>
-                  <ListItem href="/about" title="Introduction">
-                    Re-usable components built using Radix UI and Tailwind CSS.
-                  </ListItem>
-                  <ListItem href="/docs/installation" title="Installation">
-                    How to install dependencies and structure your app.
-                  </ListItem>
-                  <ListItem
-                    href="/docs/primitives/typography"
-                    title="Typography"
-                  >
-                    Styles for headings, paragraphs, lists...etc
-                  </ListItem>
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
@@ -99,7 +94,7 @@ const Navbar = () => {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
-            <NavigationMenuItem className="md:block">
+            <NavigationMenuItem className="hidden md:block">
               <NavigationMenuTrigger>List</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[300px] gap-4">
@@ -132,58 +127,14 @@ const Navbar = () => {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
-            <NavigationMenuItem className="hidden md:block">
-              <NavigationMenuTrigger>Simple</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[200px] gap-4">
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link to="#">Components</Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link to="#">Documentation</Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link to="#">Blocks</Link>
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem className="hidden md:block">
-              <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[200px] gap-4">
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link to="#" className="flex-row items-center gap-2">
-                        <CircleHelpIcon />
-                        Backlog
-                      </Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link to="#" className="flex-row items-center gap-2">
-                        <CircleIcon />
-                        To Do
-                      </Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link to="#" className="flex-row items-center gap-2">
-                        <CircleCheckIcon />
-                        Done
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
+            <Button variant="ghost" size="" className="hidden md:block">
+              <NavLink to="/user">User</NavLink>
+            </Button>
           </NavigationMenuList>
         </NavigationMenu>
-        <div>
+        <div className="flex gap-2">
           {/* <div>toggle</div> */}
-          <Link to="/user">
-            <Button>Hello</Button>
-          </Link>
+
           <Button variant="outline" type="button">
             {user ? (
               <Link to="/logout">Log out</Link>

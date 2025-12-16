@@ -25,13 +25,21 @@ export function AccountTab() {
         <div className="space-y-6">
           <div className="space-y-2">
             <Label>Login (Email)</Label>
-            <Input value={user?.email} disabled />
+            <Input
+              value={user?.Email}
+              readOnly
+              className="text-muted-foreground bg-muted/40"
+            />
           </div>
 
           <div className="grid grid-cols-3 gap-4">
             <div className="space-y-2">
               <Label>First Name</Label>
-              <Input value={user?.UserName} disabled />
+              <Input
+                value={user?.UserName}
+                readOnly
+                className="text-muted-foreground bg-muted/40"
+              />
             </div>
 
             <div className="space-y-2">
@@ -49,25 +57,11 @@ export function AccountTab() {
             <Label>Date of Birth</Label>
             <Input type="date" />
           </div>
-
-          <div className="space-y-2">
-            <Label>Time Zone</Label>
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Select time zone" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="utc+1">
-                  (UTC +01:00) Monaco – 10:23
-                </SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
         </div>
-
+        {/* 
         <div className="pt-6 justify-end flex">
           <Button>Save</Button>
-        </div>
+        </div> */}
       </CardContent>
     </Card>
   );

@@ -15,16 +15,16 @@ const MainLayout = () => {
             <Navbar />
           </CardHeader>
         </div>
-        <main className="flex-1">
+        <main className="flex-1 flex items-center justify-center">
           <Outlet />
         </main>
         <div className="border-t">
           <div>
             {/* <div className="fixed bottom-0 w-full bg-background/22 justify-center px-24 border-t py-10"> */}
             <Footer />
-            <CardFooter className="justify-center">
-              <p className="text-sm text-muted-foreground">
-                © 2024 WorkManager. All rights reserved.
+            <CardFooter className="justify-center p-0">
+              <p className="text-sm text-muted-foreground md:text-base py-4">
+                © 2025 WorkManager. All rights reserved.
               </p>
             </CardFooter>
           </div>
