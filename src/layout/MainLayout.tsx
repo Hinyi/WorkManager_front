@@ -1,9 +1,6 @@
-import { About } from "@/components/HomePage/about/About";
-import Contact from "@/components/HomePage/contact/Contact";
-import { Footer } from "@/components/MainLayout/footer/Footer";
-import Navbar from "@/components/MainLayout/Navbar/Navbar";
+import { Footer } from "@/components/MainLayout/Footer";
+import Navbar from "@/components/MainLayout/Navbar";
 import { CardFooter, CardHeader } from "@/components/ui/card";
-import { Children } from "react";
 import { Outlet } from "react-router-dom";
 
 const MainLayout = () => {
