@@ -13,6 +13,8 @@ import { IsMobile } from "@/hooks/is_mobile_hook";
 import { Button } from "@/components/ui/button";
 // import { useAuth } from "@/auth/AuthContext";
 import { useAuth } from "@/auth/AuthContext";
+import { useActiveSection } from "@/hooks/useActiveSection";
+import clsx from "clsx";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -29,11 +31,13 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ];
 
-const Navbar = () => {
+const Navbar = ({ activeSection }: { activeSection: string }) => {
   const isMobile = IsMobile();
   console.log("isMobile:", isMobile);
   const { user, isLoading } = useAuth();
   console.log("navar", user);
+
+  // const activeSection = useActiveSection();
 
   // if (isLoading) return <Button />;
   return (
@@ -54,20 +58,29 @@ const Navbar = () => {
                 <ul className="grid w-[300px] gap-4">
                   <li>
                     <NavigationMenuLink asChild>
-                      <Link to="/">
+                      <Link
+                        to="/#hero-section"
+                        className={clsx(activeSection === "hero")}
+                      >
                         <div className="font-medium">Homepage</div>
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="#">
-                        <div className="font-medium">Documentation</div>
+                      <Link
+                        to="/#product-viewer"
+                        className={clsx(activeSection === "product-viewer")}
+                      >
+                        <div className="font-medium">Product Viewer</div>
                         <div className="text-muted-foreground">
                           Learn how to use the library.
                         </div>
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="#">
+                      <Link
+                        to="/#page-section"
+                        className={clsx(activeSection === "page-section")}
+                      >
                         <div className="font-medium">Blog</div>
                         <div className="text-muted-foreground">
                           Read our latest blog posts.
