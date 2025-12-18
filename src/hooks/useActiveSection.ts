@@ -6,6 +6,7 @@ export function useActiveSection() {
   const navigate = useNavigate();
   const location = useLocation();
   const last = useRef<string | null>(null);
+  const hasInitialized = useRef(false);
 
   useEffect(() => {
     if (location.pathname !== "/") return;
@@ -20,7 +21,11 @@ export function useActiveSection() {
 
           last.current = id;
           setActive(id);
-          navigate(`#${id}`, { replace: true });
+
+          // Only navigate after initial page load
+          if (hasInitialized.current) {
+            navigate(`#${id}`, { replace: true });
+          }
         });
       },
       { rootMargin: "-30% 0px -60% 0px" }
@@ -30,8 +35,15 @@ export function useActiveSection() {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
+    // Mark as initialized after a short delay
+    setTimeout(() => {
+      hasInitialized.current = true;
+    }, 100);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      hasInitialized.current = false;
+    };
   }, [location.pathname, navigate]);
 
   return active;

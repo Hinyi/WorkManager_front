@@ -72,7 +72,7 @@ const Navbar = ({ activeSection }: { activeSection: string }) => {
                       >
                         <div className="font-medium">Product Viewer</div>
                         <div className="text-muted-foreground">
-                          Learn how to use the library.
+                          {/* Learn how to use the library. */}
                         </div>
                       </Link>
                     </NavigationMenuLink>
@@ -81,9 +81,9 @@ const Navbar = ({ activeSection }: { activeSection: string }) => {
                         to="/#page-section"
                         className={clsx(activeSection === "page-section")}
                       >
-                        <div className="font-medium">Blog</div>
+                        <div className="font-medium">PageSection</div>
                         <div className="text-muted-foreground">
-                          Read our latest blog posts.
+                          {/* Read our latest blog posts. */}
                         </div>
                       </Link>
                     </NavigationMenuLink>
