@@ -11,38 +11,6 @@ import { useForm } from "react-hook-form";
 
 const RegisterPage = () => {
   // const {mutate, isPending, isError, isSuccess, data, error} = registerService();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<RegisterRequestDTO>({
-    defaultValues: {
-      email: "",
-      firstName: "",
-      lastName: "aaaa",
-      password: "Aaaaaaa",
-      confirmPassword: "Aaaaaaa",
-    },
-  });
-
-  const mutation = useMutation<RegisterResponseDTO, Error, RegisterRequestDTO>({
-    mutationFn: async (data: RegisterRequestDTO) => {
-      const service = await registerService();
-      return service.registerUser(data);
-    },
-    onSuccess: (data) => {
-      alert("Registration successful!");
-      console.log("Registered user data:", data.id);
-    },
-    onError: (error) => {
-      alert("Registration failed!");
-      console.error("Registration error:", error);
-    },
-  });
-
-  const onSubmit = (data: RegisterRequestDTO) => {
-    mutation.mutate(data);
-  };
 
   return (
     <div className="flex w-full items-center justify-center p-6 md:p-10">

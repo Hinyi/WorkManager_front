@@ -31,7 +31,7 @@ export function useActiveSection() {
       { rootMargin: "-30% 0px -60% 0px" }
     );
 
-    ["hero", "product-viewer", "page-section"].forEach((id) => {
+    ["hero-section", "product-viewer", "page-section"].forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
