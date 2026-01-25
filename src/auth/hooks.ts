@@ -48,23 +48,3 @@ export const useLogout = (): UseMutationResult<void, AxiosError, void> => {
     },
   });
 };
-
-interface ProtectedData {
-  id: string;
-  title: string;
-  content: string;
-}
-
-export const useProtectedQuery = (): UseQueryResult<
-  ProtectedData[],
-  AxiosError
-> => {
-  return useQuery({
-    queryKey: ["protectedData"],
-    queryFn: async () => {
-      const { data } = await api.get<ProtectedData[]>("/protected/data");
-      return data;
-    },
-    enabled: true, // Only fetch when user is authenticated
-  });
-};

@@ -26,7 +26,7 @@ export function AccountTab() {
           <div className="space-y-2">
             <Label>Login (Email)</Label>
             <Input
-              value={user?.Email}
+              value={user?.email}
               readOnly
               className="text-muted-foreground bg-muted/40"
             />
