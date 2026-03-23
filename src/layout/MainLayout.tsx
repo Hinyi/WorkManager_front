@@ -20,7 +20,7 @@ const MainLayout = () => {
         <main className="flex-1 flex items-center justify-center">
           <Outlet />
         </main>
-        <div className="border-t">
+        <div className="">
           <div>
             {/* <div className="fixed bottom-0 w-full bg-background/22 justify-center px-24 border-t py-10"> */}
             <Footer />

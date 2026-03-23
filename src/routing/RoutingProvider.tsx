@@ -14,6 +14,7 @@ import RegisterPage from "@/Pages/RegisterPage/RegisterPage";
 import LogoutPage from "@/Pages/LogoutPage/LogoutPage";
 import { ProtectedRoute } from "@/Pages/ProtectedRoute/ProtectedRoute";
 import UserProfile from "@/Pages/UserDashboard/UserDashboard";
+import TaskPage from "@/Pages/TasksPage/TaskPage";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <UserProfile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/tasks",
+        element: (
+          <ProtectedRoute>
+            <TaskPage />
           </ProtectedRoute>
         ),
       },

@@ -36,7 +36,7 @@ export function AccountTab() {
             <div className="space-y-2">
               <Label>First Name</Label>
               <Input
-                value={user?.UserName}
+                value={user?.userName}
                 readOnly
                 className="text-muted-foreground bg-muted/40"
               />
