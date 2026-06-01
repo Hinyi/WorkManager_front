@@ -142,6 +142,9 @@ const Navbar = ({ activeSection }: { activeSection: string }) => {
             </NavigationMenuItem>
             <Button variant="ghost" size="" className="hidden md:block">
               <NavLink to="/user">User</NavLink>
+            </Button>{" "}
+            <Button variant="ghost" size="" className="hidden md:block">
+              <NavLink to="/tasks">Tasks</NavLink>
             </Button>
           </NavigationMenuList>
         </NavigationMenu>
