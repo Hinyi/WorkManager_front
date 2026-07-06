@@ -13,11 +13,11 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { registerService } from "@/services/registerService/registerService";
+import { registerService } from "@/services/registerService";
 import {
   RegisterRequestDTO,
   RegisterResponseDTO,
-} from "@/services/registerService/registerServiceDTO";
+} from "@/services/registerService";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { Navigate, useNavigate } from "react-router-dom";

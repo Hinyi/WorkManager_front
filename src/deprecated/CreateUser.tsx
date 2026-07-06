@@ -1,5 +1,5 @@
-import { CreateUserRequestDTO } from "@/services/UserService/createUser.dto";
-import { UserService } from "@/services/UserService/UserService";
+import { CreateUserRequestDTO } from "@/deprecated/UserService";
+import { UserService } from "@/deprecated/UserService";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 

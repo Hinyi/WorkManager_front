@@ -1,6 +1,17 @@
 import { POST } from "@/xhr/httpUtils";
-import { CreateUserRequestDTO, CreateUserResponseDTO } from "./createUser.dto";
 import { BASE_URL } from "@/xhr/urls";
+
+export type CreateUserRequestDTO = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  confirmPassword: string;
+};
+
+export type CreateUserResponseDTO = {
+  id: string;
+};
 
 interface IUserService {
   createUser: (body: CreateUserRequestDTO) => Promise<CreateUserResponseDTO>;

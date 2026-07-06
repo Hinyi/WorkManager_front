@@ -1,5 +1,5 @@
 import { SignupForm } from "@/components/SignUp/signup-form";
-import { registerService } from "@/services/registerService/registerService";
+import { registerService } from "@/services/registerService";
 import {
   RegisterRequestDTO,
   RegisterResponseDTO,
