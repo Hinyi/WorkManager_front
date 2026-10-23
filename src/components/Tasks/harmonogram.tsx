@@ -83,61 +83,72 @@ function fmt(h, m = 0) {
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
 }
 
-// const INITIAL_TASKS = [
-//   {
-//     id: 1,
-//     title: "Team standup",
-//     day: "Mon",
-//     startH: 9,
-//     startM: 0,
-//     endH: 9,
-//     endM: 30,
-//     color: 0,
-//   },
-//   {
-//     id: 2,
-//     title: "Design review",
-//     day: "Tue",
-//     startH: 11,
-//     startM: 0,
-//     endH: 12,
-//     endM: 0,
-//     color: 1,
-//   },
-//   {
-//     id: 3,
-//     title: "Deep work",
-//     day: "Wed",
-//     startH: 8,
-//     startM: 0,
-//     endH: 10,
-//     endM: 0,
-//     color: 2,
-//   },
-//   {
-//     id: 4,
-//     title: "1-on-1",
-//     day: "Thu",
-//     startH: 14,
-//     startM: 0,
-//     endH: 14,
-//     endM: 45,
-//     color: 4,
-//   },
-//   {
-//     id: 5,
-//     title: "Weekly retro",
-//     day: "Fri",
-//     startH: 15,
-//     startM: 30,
-//     endH: 16,
-//     endM: 30,
-//     color: 5,
-//   },
-// ];
+interface Task {
+  id: number;
+  title: string;
+  day: string;
+  startH: number;
+  startM: number;
+  endH: number;
+  endM: number;
+  color: number;
+}
+
+const INITIAL_TASKS = [
+  {
+    id: 1,
+    title: "Team standup",
+    day: "Mon",
+    startH: 9,
+    startM: 0,
+    endH: 9,
+    endM: 30,
+    color: 0,
+  },
+  {
+    id: 2,
+    title: "Design review",
+    day: "Tue",
+    startH: 11,
+    startM: 0,
+    endH: 12,
+    endM: 0,
+    color: 1,
+  },
+  {
+    id: 3,
+    title: "Deep work",
+    day: "Wed",
+    startH: 8,
+    startM: 0,
+    endH: 10,
+    endM: 0,
+    color: 2,
+  },
+  {
+    id: 4,
+    title: "1-on-1",
+    day: "Thu",
+    startH: 14,
+    startM: 0,
+    endH: 14,
+    endM: 45,
+    color: 4,
+  },
+  {
+    id: 5,
+    title: "Weekly retro",
+    day: "Fri",
+    startH: 15,
+    startM: 30,
+    endH: 16,
+    endM: 30,
+    color: 5,
+  },
+];
 
 export default function ScheduleHarmonogram() {
-  const [tasks, setTasks] = useState(); //(INITIAL_TASKS);
+  const [tasks, setTasks] = useState<Task[]>([]); //INITIAL_TASKS
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({
     title: "",
